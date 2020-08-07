@@ -1,13 +1,6 @@
 import { IUserDocument, IUserModel } from "./users.types";
+import { UserModel } from "./users.model";
 
-// export async function findOneOrCreate(
-//     this: IUserModel,
-//     userId: string
-//   ): Promise<IUserDocument> {
-//     const record = await this.findOne({ userId });
-//     if (record) {
-//       return record;
-//     } else {
-//       return this.create({userId});
-//     }
-// }
+export async function getUsers() {
+    return UserModel.find().limit(5);
+}

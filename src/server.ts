@@ -3,37 +3,11 @@ import * as express from "express";
 import {ApolloServer, gql} from 'apollo-server-express';
 import {BlogModel} from "./database/blogs/blogs.model"
 import {UserModel} from "./database/users/users.model"
-// import * as mongoose from "mongoose";
+import {typeDefs} from "./graphql/users/users.schema";
+import {resolvers} from "./graphql/users/users.resolver";
 
 const app = express();
 const PORT = 4444;
-
-const typeDefs = gql`
-    type Blog {
-        title: String!
-        author: String 
-        body: String
-        dateOfEntry: String
-        lastUpdated: String
-    }
-
-    type User {
-        username: String!
-        password: String!
-        email: String
-        dateOfEntry: String
-        lastUpdated: String
-    }
-
-    type Query {
-        showAllUsers: [User]
-        showAllBlogs: [Blog]
-    }
-`;
-
-const resolvers = {
-    Query: () => {}
-}
 
 connect();
 
